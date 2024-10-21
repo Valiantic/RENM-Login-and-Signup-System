@@ -48,6 +48,8 @@ const Login = () => {
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Login</button>
+        <p>Don't have an account?</p>
+        <button onClick={() => navigate('/signup')}>Go to Signup</button>
       </form>
     </div>
   );

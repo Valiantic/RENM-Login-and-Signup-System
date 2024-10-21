@@ -14,6 +14,18 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  const validateEmail = (email) => {
+    // Basic email validation regex
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+  
+  const validatePassword = (password) => {
+    // Check if password is at least 8 characters long
+    return password.length >= 8;
+  };
+
+  // BLANK FIELD DETECTION 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,6 +39,15 @@ const SignUp = () => {
     }
     if (!password) {
       setError('Password is required!');
+      return;
+    }
+
+    if(!validateEmail(email)) {
+      setError('Invalid email!');
+      return;
+    }
+    if(!validatePassword(password)) {
+      setError('Password must be at least 8 characters long!');
       return;
     }
   
