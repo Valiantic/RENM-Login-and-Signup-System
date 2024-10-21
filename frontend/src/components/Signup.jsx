@@ -8,16 +8,39 @@ const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  // FOR BLANK FIELD DETECTOR
+  const [error, setError] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!username) {
+      setError('Username is required!');
+      return;
+    }
+    if (!email) {
+      setError('Email is required!');
+      return;
+    }
+    if (!password) {
+      setError('Password is required!');
+      return;
+    }
+  
+
+    setError('');
+
+
     try {
       await axios.post('http://localhost:5000/signup', {
         username,
         email,
         password
       });
+    
       alert('User registered successfully');
       navigate('/login');
     } catch (error) {
@@ -28,6 +51,9 @@ const SignUp = () => {
   return (
     <div className='Signupcontainer'>
       <form className='Signupform' onSubmit={handleSubmit}>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
         <h2>Sign Up</h2>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
