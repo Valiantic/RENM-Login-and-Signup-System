@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../assets/css/signup.css';
 
 
 const SignUp = () => {
@@ -25,15 +26,15 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='Signupcontainer'>
+      <form className='Signupform' onSubmit={handleSubmit}>
+        <h2>Sign Up</h2>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button type="submit">Sign Up</button>
+        <button onClick={() => navigate('/login')}>Go to Login</button>
       </form>
-      <button onClick={() => navigate('/login')}>Go to Login</button>
     </div>
   );
 };
