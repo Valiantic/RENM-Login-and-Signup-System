@@ -10,7 +10,9 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
 
   // FOR BLANK FIELD DETECTOR
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); // For error message
+  const [success, setSuccess] = useState(''); // For success message
+
 
   const navigate = useNavigate();
 
@@ -52,7 +54,9 @@ const SignUp = () => {
     }
   
 
-    setError('');
+    setError(''); // Reset error message
+    setSuccess(''); // Reset success message
+
 
 
     try {
@@ -61,11 +65,20 @@ const SignUp = () => {
         email,
         password
       });
+
+
+      // Set the success message upon successful signup
+      setSuccess('Signup successful! Redirecting...');
     
-      alert('User registered successfully');
-      navigate('/login');
+      // Redirect after a delay to the customer page (replace '/customer' with the correct route)
+      setTimeout(() => {
+        navigate('/customer');
+      }, 2000); // Adjust the delay as necessary
+
+
     } catch (error) {
-      alert(error.response.data.error);
+          setError(error.response?.data?.error || 'Signup failed');
+
     }
   };
 
@@ -73,12 +86,19 @@ const SignUp = () => {
     <div className='Signupcontainer'>
       <form className='Signupform' onSubmit={handleSubmit}>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
+    
         <h2>Sign Up</h2>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        
+        {/* Display success message */}
+        {success && <p style={{ color: 'green' }}>{success}</p>}
+
+        {/* Display error message */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        
+        
         <button type="submit">Sign Up</button>
         <button onClick={() => navigate('/login')}>Go to Login</button>
       </form>
