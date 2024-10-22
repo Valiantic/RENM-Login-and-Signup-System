@@ -79,9 +79,9 @@ app.post('/login', (req, res) => {
       req.session.username = user.username;
 
       if (user.username === 'Admin') {
-        return res.json({ message: 'Hello Admin', redirectUrl: '/admin' });
+        return res.json({ message: 'Welcome back Admin!', redirectUrl: '/admin' });
       } else {
-        return res.json({ message: 'Hello Customer', redirectUrl: '/customer' });
+        return res.json({ message: 'Login successful!', redirectUrl: '/customer' });
       }
     });
   });

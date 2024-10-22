@@ -7,9 +7,12 @@ import Customer from './components/Customer';
 import Admin from './components/Admin';
 import Error from './components/Error';
 
+import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+       <Router>
       <div className="App">
         <Routes>
           <Route path="/signup" element={<Signup />} />
@@ -21,6 +24,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
