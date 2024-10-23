@@ -8,6 +8,7 @@ import Admin from './components/Admin';
 import Error from './components/Error';
 
 import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+import PrivateRoute from './PrivateRoute'; // Restrict access to private routes
 
 function App() {
   return (
@@ -17,8 +18,13 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/customer" element={<Customer />} />
-          <Route path="/admin" element={<Admin />} />
+
+           {/* Protect the /admin route */}
+          <Route path="/admin" element={<PrivateRoute><Admin /></PrivateRoute>} />
+
+          {/* Protect the /customer route */}
+          <Route path="/customer" element={<PrivateRoute><Customer /></PrivateRoute>} />
+          
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<Error />} />
         </Routes>
