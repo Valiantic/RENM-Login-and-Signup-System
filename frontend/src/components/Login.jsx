@@ -27,6 +27,19 @@ const Login = () => {
     setSuccess('');
 
 
+    if(!email) {
+      setError('Email is required!');
+      return;
+    }
+    if(!password) {
+      setError('Password is required!');
+      return;
+    }
+    if(!email || !password) {
+      setError('Please input all fields!');
+      return;
+    }
+    
 
     try {
       const response = await axios.post('http://localhost:5000/login', {
@@ -50,14 +63,6 @@ const Login = () => {
         if (error.response.status === 401) {
             setMessage('Incorrect email or password'); // Generic message for invalid credentials
         } 
-        else if(!email) {
-          setError('Email is required!');
-          return;
-        }
-        else if(!password) {
-          setError('Password is required!');
-          return;
-        }
         else {
             setMessage('Incorrect email or password');
         }

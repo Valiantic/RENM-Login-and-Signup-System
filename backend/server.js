@@ -9,7 +9,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-// Middleware
+// Middleware // allows the server to connect with frontend
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -78,11 +78,14 @@ app.post('/login', (req, res) => {
       req.session.userId = user.id;
       req.session.username = user.username;
 
+
+      // Display username
       if (user.username === 'Admin') {
-        return res.json({ message: 'Welcome back Admin!', redirectUrl: '/admin' });
+        return res.json({ message: 'Welcome back Admin!', username: user.username, redirectUrl: '/admin' });
       } else {
-        return res.json({ message: 'Login successful!', redirectUrl: '/customer' });
+        return res.json({ message: 'Login successful!', username: user.username, redirectUrl: '/customer' });
       }
+
     });
   });
 });

@@ -1,12 +1,15 @@
 import React from 'react';
-import '../assets/css/customer.css';
+import { useAuth } from '../AuthContext'; // Assuming you have an AuthContext
 
-function Customer() {
+const Customer = () => {
+  const { user } = useAuth(); // Get the logged-in user data from context
+
   return (
-    <div className='customercontainer'>
-      <h1>Hello Customer</h1>
+    <div>
+       {/* display username */}
+      <h1>Welcome {user ? user.username : 'Guest'}!</h1>
     </div>
   );
-}
+};
 
 export default Customer;
