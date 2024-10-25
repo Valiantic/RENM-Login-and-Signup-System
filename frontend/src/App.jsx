@@ -7,7 +7,11 @@ import Customer from './components/Customer';
 import Admin from './components/Admin';
 import Error from './components/Error';
 
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+
 import { AuthProvider } from './AuthContext'; // Import the AuthProvider
+
 import PrivateRoute from './PrivateRoute'; // Restrict access to private routes
 
 function App() {
@@ -24,7 +28,10 @@ function App() {
 
           {/* Protect the /customer route */}
           <Route path="/customer" element={<PrivateRoute><Customer /></PrivateRoute>} />
-          
+
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
           <Route path="/" element={<Home />} />
           <Route path="/*" element={<Error />} />
         </Routes>

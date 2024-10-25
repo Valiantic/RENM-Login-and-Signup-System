@@ -107,6 +107,8 @@ const Login = () => {
         <p>Don't have an account?</p>
         <button onClick={() => navigate('/signup')}>Go to Signup</button>
 
+        <button onClick={() => navigate('/forgot-password')}>Forgot Password?</button>
+
 
     
 
