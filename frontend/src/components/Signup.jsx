@@ -23,8 +23,8 @@ const SignUp = () => {
   };
   
   const validatePassword = (password) => {
-    // Check if password is at least 8 characters long
-    return password.length >= 8;
+    const regex = /^(?=.*[A-Z])(?=.*[0-9]).{8,}$/; // Must contain at least one capital letter, one number, and be 8+ characters
+    return regex.test(password);
   };
 
   // BLANK FIELD DETECTION 
@@ -49,7 +49,7 @@ const SignUp = () => {
       return;
     }
     if(!validatePassword(password)) {
-      setError('Password must be at least 8 characters long!');
+      setError('Password must be at least 8 characters long and contain at least one number and one uppercase letter!');
       return;
     }
   
