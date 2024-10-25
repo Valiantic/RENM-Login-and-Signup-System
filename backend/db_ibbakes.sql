@@ -14,3 +14,9 @@ CREATE TABLE tbl_users (
 ALTER TABLE tbl_users
 ADD COLUMN reset_token VARCHAR(255),
 ADD COLUMN reset_token_expires BIGINT;
+
+
+-- ADD ADMIN ACCOUNT
+INSERT INTO tbl_users (username, email, password)
+VALUES ('Admin', 'admin@bakes.com', '$2y$10$wN5tfyWg9iLg0XfT6ZmpLeEd1jSyQipO/1kDhY.FSAIYosGv97G2C');
+

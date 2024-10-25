@@ -1,12 +1,14 @@
+<h1>BACKEND STARTUP </h1>
 
-<h1> BACKEND SCRIPTING AND ENCRYPTION </h1>
-<p>npm install express mysql2 body-parser cors bcryptjs</p>
+<p>npm init -y</p>
+<p>npm install express mysql2 bcryptjs jsonwebtoken express-session cors</p>
+
+<h1> BACKEND MIDDLEWARE  </h1>
+
+<p>npm install body-parser</p>
 
 <h1> BACKEND SESSION </h1> 
-<p>npm install express-session connect-mysql-session</p>
-
-<h1> EXPRESS SESSION </h1> 
-<p>npm install jsonwebtoken express-session</p>  
+<p>npm install connect-mysql-session</p>
 
 <h1> FORGOT PASSWORD </h1> 
 <p>npm install nodemailer crypto</p>  
